@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الزاهر الرياضي</title>
+    <style>
+        /* تعريف الألوان المعتمدة للمتجر */
+        :root {
+            --primary-navy: #0A1931;    /* الكحلي الأساسي */
+            --accent-orange: #FF6B00;  /* البرتقالي للأزرار */
+            --light-white: #F9F9F9;    /* الأبيض للنصوص */
+            --card-bg: #15305B;        /* كحلي فاتح للكروت */
+            --text-gray: #B0C4DE;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-navy);
+            color: var(--light-white);
+            padding-bottom: 60px;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background-color: rgba(10, 25, 49, 0.95);
+            border-bottom: 2px solid var(--accent-orange);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--light-white);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        /* واجهة الترحيب والتعريف */
+        .hero {
+            padding: 30px 5% 20px 5%;
+            text-align: center;
+            background: linear-gradient(180deg, var(--primary-navy) 0%, #112B54 100%);
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-orange);
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: var(--text-gray);
+            max-width: 500px;
+            margin: 0 auto 25px auto;
+            line-height: 1.5;
+        }
+
+        /* أزرار الأقسام السريعة والسهلة */
+        .category-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 5%;
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            background-color: var(--card-bg);
+            color: var(--light-white);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--accent-orange);
+            color: var(--primary-navy);
+            border-color: var(--accent-orange);
+        }
+
+        /* شبكة المنتجات */
+        .products-section {
+            padding: 0 5%;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* كرت المنتج السلس */
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 107, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-orange);
+        }
+
+        /* مكان الصورة الافتراضية */
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background-color: #0d2345;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            font-size: 40px;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-brand {
+            font-size: 11px;
+            color: var(--accent-orange);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--light-white);
+            height: 44px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--light-white);
+            margin-bottom: 12px;
+        }
+
+        /* اختيار المقاس السريع */
+        .size-selector {
+            margin-bottom: 15px;
+        }
+
+        .size-select {
+            width: 100%;
+            padding: 8px;
+            background-color: var(--primary-navy);
+            color: var(--light-white);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 6px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        /* زر الواتساب المباشر بنقرة واحدة */
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--accent-orange);
+            color: var(--primary-navy);
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            border: none;
+            width: 100%;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #ff8533;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- أعلى الصفحة -->
+    <header>
+        <div class="logo">المتجر <span>الزاهر</span></div>
+    </header>
+
+    <!-- مقدمة ترحيبية بسيطة -->
+    <section class="hero">
+        <h1>تجهّز للملعب مع <span>الزاهر</span></h1>
+        <p>ملابس، ترينجات، أحذية كرة قدم من ماركات عالمية، بالإضافة للكؤوس والميداليات. اطلب طلبك بكبسة زر عبر الواتساب.</p>
+    </section>
+
+    <!-- أزرار الأقسام للفلترة السريعة بدون ملل -->
+    <div class="category-container">
+        <button class="category-btn active" onclick="filterCategory('all')">الكل</button>
+        <button class="category-btn" onclick="filterCategory('clothes')">الملابس والترينجات</button>
+        <button class="category-btn" onclick="filterCategory('shoes')">الأحذية الرياضية</button>
+        <button class="category-btn" onclick="filterCategory('awards')">الكؤوس والميداليات</button>
+    </div>
+
+    <!-- قسم عرض البضاعة -->
+    <main class="products-section">
+        <div class="products-grid" id="products-container">
+            
+            <!-- منتج 1: ملابس -->
+            <div class="product-card" data-category="clothes">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <div class="product-brand">ADIDAS</div>
+                    <div class="product-title">ترينج رياضي كامل - نسيج مريح وفخم</div>
+                    <div class="product-price">150 شيكل</div>
+                    <div class="size-selector">
+                        <select class="size-select" id="size-1">
+                            <option value="M">المقاس: M</option>
+                            <option value="L">المقاس: L</option>
+                            <option value="XL">المقاس: XL</option>
+                            <option value="XXL">المقاس: XXL</option>
+                        </select>
+                    </div>
+                    <button class="whatsapp-btn" onclick="sendOrder('ترينج رياضي أديداس كامل', '150 شيكل', 'size-1')">
+                        اطلب مباشرة عبر واتساب 💬
+                    </button>
+                </div>
+            </div>
+
+            <!-- منتج 2: أحذية -->
+            <div class="product-card" data-category="shoes">
+                <div class="product-image">👟</div>
+                <div class="product-info">
+                    <div class="product-brand">NIKE</div>
+                    <div class="product-title">حذاء ميركوريال مخصص لملاعب كرة القدم</div>
+                    <div class="product-price">220 شيكل</div>
+                    <div class="size-selector">
+                        <select class="size-select" id="size-2">
+                            <option value="41">المقاس: 41</option>
+                            <option value="42">المقاس: 42</option>
+                            <option value="43">المقاس: 43</option>
+                            <option value="44">المقاس: 44</option>
+                        </select>
+                    </div>
+                    <button class="whatsapp-btn" onclick="sendOrder('حذاء نايكي ميركوريال', '220 شيكل', 'size-2')">
+                        اطلب مباشرة عبر واتساب 💬
+                    </button>
+                </div>
+            </div>
+
+            <!-- منتج 3: كؤوس -->
+            <div class="product-card" data-category="awards">
+                <div class="product-image">🏆</div>
+                <div class="product-info">
+                    <div class="product-brand">الزاهر</div>
+                    <div class="product-title">كأس بطولة ذهبي حجم كبير مع قاعدة خشبية</div>
+                    <div class="product-price">80 شيكل</div>
+                    <div class="size-selector">
+                        <select class="size-select" id="size-3">
+                            <option value="حجم كبير">الحجم: كبير</option>
+                            <option value="حجم متوسط">الحجم: متوسط</option>
+                        </select>
+                    </div>
+                    <button class="whatsapp-btn" onclick="sendOrder('كأس بطولة ذهبي كبير', '80 شيكل', 'size-3')">
+                        اطلب مباشرة عبر واتساب 💬
+                    </button>
+                </div>
+            </div>
+
+            <!-- منتج 4: ميداليات -->
+            <div class="product-card" data-category="awards">
+                <div class="product-image">🥇</div>
+                <div class="product-info">
+                    <div class="product-brand">الزاهر</div>
+                    <div class="product-title">ميداليات تكريم رياضية (ذهبي / فضي / برونزي)</div>
+                    <div class="product-price">5 شيكل</div>
+                    <div class="size-selector">
+                        <select class="size-select" id="size-4">
+                            <option value="ذهبي">اللون: ذهبي</option>
+                            <option value="فضي">اللون: فضي</option>
+                            <option value="برونزي">اللون: برونزي</option>
+                        </select>
+                    </div>
+                    <button class="whatsapp-btn" onclick="sendOrder('ميدالية تكريم رياضية', '5 شيكل', 'size-4')">
+                        اطلب مباشرة عبر واتساب 💬
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // دالة الفلترة السلسة والسريعة للأقسام
+        function filterCategory(category) {
+            // تغيير تفعيل الأزرار
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // إخفاء وإظهار الكروت بسلاسة
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // دالة إرسال الطلب الفوري للواتساب الخاص بك دون أي تعقيد للزبون
+        function sendOrder(productName, productPrice, sizeId) {
+            var selectedSize = document.getElementById(sizeId).value;
+            var phoneNumber = "9705302411"; 
+            
+            var message = "مرحباً متجر الزاهر، أريد طلب:\n" +
+                          "📦 المنتج: " + productName + "\n" +
+                          "📐 " + selectedSize + "\n" +
+                          "💰 السعر: " + productPrice + "\n\n" +
+                          "هل هو متوفر حالياً؟";
+            
+            var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
